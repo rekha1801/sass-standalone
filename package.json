@@ -11,7 +11,7 @@
     "clean": "rm -rf dist",
     "clean:styles": "rm -rf src/styles",
     "build:styles": "sass src/scss:src/styles",
-    "copy": "mkdir dist && rsync --exclude=\"/scss\" src/ dist",
+    "copy": "mkdir dist && rsync -av --exclude=\"/scss\" src/ dist",
     "build": "run-s clean clean:styles build:styles copy",
     "publish": "gh-pages -d dist",
     "deploy": "run-s build publish"
