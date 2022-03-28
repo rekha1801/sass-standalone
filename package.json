@@ -8,7 +8,13 @@
     "serve": "live-server src",
     "watch": "sass --watch src/scss:src/styles",
     "start": "run-p serve watch",
-    "publish": "gh-pages -d dist"
+    "clean": "rm -rf dist",
+    "clean:styles": "rm -rf src/styles",
+    "build:styles": "sass src/scss:src/styles",
+    "copy": "mkdir dist && rsync --exclude=\"/scss\" src/ dist",
+    "build": "run-s clean clean:styles build:styles copy",
+    "publish": "gh-pages -d dist",
+    "deploy": "run-s build publish"
   },
   "keywords": [],
   "author": "Rekha",
